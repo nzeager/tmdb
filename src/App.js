@@ -6,7 +6,9 @@ import { SearchPage } from './SearchPage';
 function App() {
 
   return (
-    <SearchPage />
+    <div className="app">
+      <SearchPage />
+    </div>
   );
 }
 
