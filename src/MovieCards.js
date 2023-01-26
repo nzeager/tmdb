@@ -2,10 +2,11 @@ import { Card } from "react-bootstrap"
 import { Button } from "react-bootstrap"
 
 export const MovieCards = ({ movies, setMovie }) => {
-    console.log(movies)
+
     return(
         <>
             <div><strong>More Results</strong></div>
+            <div className="movie-cards">
             {movies.map((mov) => (
                 <div key={mov.id}>
                 <Card style={{ width: '18rem' }}>
@@ -21,6 +22,7 @@ export const MovieCards = ({ movies, setMovie }) => {
                 </Card>
                 </div>
             ))}
+            </div>
         </>
     )
 }
@@ -32,13 +34,3 @@ const goToTop = () => {
         behavior: "smooth",
     });
 };
-
-// Splits array into array of smaller arrays. Code from: https://stackabuse.com/how-to-split-an-array-into-even-chunks-in-javascript/
-function sliceIntoChunks(arr, chunkSize) {
-    const res = [];
-    for (let i = 0; i < arr.length; i += chunkSize) {
-        const chunk = arr.slice(i, i + chunkSize);
-        res.push(chunk);
-    }
-    return res;
-}

@@ -1,11 +1,16 @@
 .app {
-    padding-left: 10px;
-}
-
-.search-results {
-    padding-left: 10px;
+    margin: auto;
+    width: 895px;
 }
 
 .backdrop {
     height: 10px;
+}
+
+.movie-cards {
+    /* width: 100%; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 25px;
+    row-gap: 25px;
 }
