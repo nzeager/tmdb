@@ -1,6 +1,7 @@
 .app {
     margin: auto;
-    width: 895px;
+    max-width: 895px;
+    width: calc(100% - 20px);
 }
 
 .backdrop {
@@ -12,4 +13,10 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 25px;
     row-gap: 25px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }

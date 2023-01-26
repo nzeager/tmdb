@@ -15,7 +15,7 @@ export const SearchResults = ({ movieName, movies, movie, setMovie }) => {
         return(
             <div className="search-results">
                 <FeaturedMovie movie={movie} />
-                <MovieCards movies={movies} setMovie={setMovie} />
+                <MovieCards movie={movie} movies={movies} setMovie={setMovie} />
             </div>
         )
     }
