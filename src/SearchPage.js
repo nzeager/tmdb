@@ -24,7 +24,7 @@ export const SearchPage = () => {
     return(
         <>
             <SearchBar movieName={movieName} setMovieName={setMovieName} />
-            <SearchResults movieName={movieName} movies={movies} movie={movie} />
+            <SearchResults movieName={movieName} movies={movies} movie={movie} setMovie={setMovie} />
         </>
     );
 }

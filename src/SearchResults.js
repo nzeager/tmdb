@@ -2,7 +2,7 @@ import { FeaturedMovie } from "./FeaturedMovie"
 import { MovieCards } from "./MovieCards"
 import { NoResults } from "./NoResults"
 
-export const SearchResults = ({ movieName, movies, movie }) => {
+export const SearchResults = ({ movieName, movies, movie, setMovie }) => {
     if (movieName === "") {
         return(
             <></>
@@ -15,7 +15,7 @@ export const SearchResults = ({ movieName, movies, movie }) => {
         return(
             <div className="search-results">
                 <FeaturedMovie movie={movie} />
-                <MovieCards movies={movies} movie={movie} />
+                <MovieCards movies={movies} setMovie={setMovie} />
             </div>
         )
     }
