@@ -7,7 +7,7 @@ import { SearchResults } from './SearchResults';
 export const SearchPage = () => {
     // Tracks user's search input
     const [movieName, setMovieName] = useState("");
-    // Up to 10 movies from search results
+    // Up to 12 movies from search results
     const [movies, setMovies] = useState([]);
     // Featured movie from search results
     const [movie, setMovie] = useState({});
@@ -34,7 +34,7 @@ function updateSearch(searchInput, setMovies, setMovie) {
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=23ca29d10fcb0ee407a6a0fddb586cfc&language=en-US&page=1&include_adult=false&query=${searchInput}`)
     .then(response => {
         if (response.data.length != 0) {
-            setMovies(response.data.results.slice(0, 10));
+            setMovies(response.data.results.slice(0, 12));
             setMovie(response.data.results[0]);
         }
     })

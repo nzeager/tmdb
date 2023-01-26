@@ -1,7 +1,12 @@
 import { Card } from "react-bootstrap"
 import { Button } from "react-bootstrap"
+import broken_poster_path from "./images/broken_poster_path.png"
 
 export const MovieCards = ({ movies, setMovie }) => {
+    // Replaces broken images with default image
+    const onImageError = (e) => {
+        e.target.src = broken_poster_path;
+    }
 
     return(
         <>
@@ -10,7 +15,7 @@ export const MovieCards = ({ movies, setMovie }) => {
             {movies.map((mov) => (
                 <div key={mov.id}>
                 <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`} alt={`${mov.original_title} poster`} />
+                    <Card.Img variant="top" src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`} alt={`${mov.original_title} poster`}  onError={onImageError} />
                     <Card.Body>
                         <Card.Title>{mov.original_title}</Card.Title>
                         <Button variant="primary" onClick={() => {
