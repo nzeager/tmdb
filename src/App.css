@@ -29,6 +29,24 @@
     row-gap: 25px;
 }
 
+@media (max-width: 46rem) {
+    .movie-cards {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 35rem) {
+    .movie-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 20rem) {
+    .movie-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
 .border-shadow {
     box-shadow: 4px 4px 5px rgb(170, 170, 170);
 }
