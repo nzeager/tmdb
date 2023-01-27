@@ -9,17 +9,30 @@ export const FeaturedMovie = ({ movie }) => {
 
     return(
         <>
-            <div><strong>Featured Result</strong></div>
+            <div><strong>Selected Movie</strong></div>
             {console.log(movie.backdrop_path)}
             <Card>
-                <Card.Img variant="top" src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={`${movie.original_title} poster`} onError={onImageError}/>
+                <Card.Img
+                    variant="top"
+                    src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                    alt={`${movie.title} poster`}
+                    onError={onImageError}
+                />
                 <Card.Body>
-                    <Card.Title>{movie.original_title}</Card.Title>
+                    <Card.Title>{movie.title}</Card.Title>
                     <Card.Text>
-                    {movie.overview && <div><strong>Overview:</strong> {movie.overview}</div>}
+                        {movie.overview && (
+                            <>
+                                <strong>Overview:</strong> {movie.overview}
+                            </>
+                        )}
                     </Card.Text>
                     <Card.Text>
-                    {movie.release_date && <div><strong>Release Date:</strong> {movie.release_date}</div>}
+                        {movie.release_date && (
+                            <>
+                                <strong>Release Date:</strong> {movie.release_date}
+                            </>
+                        )}
                     </Card.Text>
                 </Card.Body>
             </Card>

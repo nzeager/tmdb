@@ -4,9 +4,7 @@ import { NoResults } from "./NoResults"
 
 export const SearchResults = ({ movieName, movies, movie, setMovie }) => {
     if (movieName === "") {
-        return(
-            <></>
-        )
+        return;
     } else if (movies.length === 0) {
         return(
             <NoResults />
@@ -15,7 +13,11 @@ export const SearchResults = ({ movieName, movies, movie, setMovie }) => {
         return(
             <div className="search-results">
                 <FeaturedMovie movie={movie} />
-                <MovieCards movie={movie} movies={movies} setMovie={setMovie} />
+                <MovieCards
+                    movie={movie}
+                    movies={movies}
+                    setMovie={setMovie}
+                />
             </div>
         )
     }

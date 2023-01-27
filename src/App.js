@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="app">
       <div>
-        <h1>Find My Movie</h1>
+        <h1 className='site-title'>Find My Movie</h1>
         <SearchPage />
       </div>
       <div className="about">

@@ -1,15 +1,7 @@
 /* Using the grid layout method from here to pin 'about' section to the bottom of the page, unless the other content pushes it further down: https://css-tricks.com/couple-takes-sticky-footer/ */
 
-html {
-    height: 100%;
-}
-
-body {
-    height: 100%;
-}
-
 #root {
-    height: 100%;
+    background: #ededed;
 }
 
 .app {
@@ -17,9 +9,13 @@ body {
     max-width: 895px;
     width: calc(100% - 20px);
 
-    min-height: 100%;
+    min-height: 100vh;
     display: grid;
     grid-template-rows: 1fr auto;
+}
+
+.site-title {
+    padding-top: 20px;
 }
 
 .results {
@@ -34,7 +30,7 @@ body {
 }
 
 .border-shadow {
-    box-shadow: 3px 3px black;
+    box-shadow: 4px 4px 5px rgb(170, 170, 170);
 }
 
 .card-body {
