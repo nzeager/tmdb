@@ -10,7 +10,6 @@ export const FeaturedMovie = ({ movie }) => {
     return(
         <>
             <div><strong>Selected Movie</strong></div>
-            {console.log(movie.backdrop_path)}
             <Card>
                 <Card.Img
                     variant="top"
