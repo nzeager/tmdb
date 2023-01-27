@@ -11,36 +11,61 @@ export const SearchPage = () => {
     const [movies, setMovies] = useState([]);
     // Featured movie from search results
     const [movie, setMovie] = useState({});
+    // Tracks loading status
+    const [loading, setLoading] = useState(false);
 
-    const debouncedMovieName = useDebounce(movieName, 500)
+    // Note: Debounce code is based on: https://usehooks.com/useDebounce/
+    const debouncedMovieName = useDebounce(movieName, 500, setLoading)
+
+    // Initiates loading if movieName is changed
+    useEffect(() => {
+        setLoading(true);
+    }, [movieName])
 
     // 500ms after user stops typing search input, API call will return information on the movie
     useEffect(() => {
-        if (debouncedMovieName) {
-            updateSearch(debouncedMovieName, setMovies, setMovie)
-        }
+        updateSearch(debouncedMovieName, setMovies, setMovie, setLoading)
     }, [debouncedMovieName])
-
-    return(
-        <>
-            <SearchBar movieName={movieName} setMovieName={setMovieName} />
-            <SearchResults movieName={movieName} movies={movies} movie={movie} setMovie={setMovie} />
-        </>
-    );
+    
+    // Page displays loading symbol under search bar if input is being changed, and displays results under search bar once user has finished typing
+    if (loading) {
+        return(
+            <>
+                <SearchBar movieName={movieName} setMovieName={setMovieName} />
+                <div className="spinner-border" role="status">
+                </div>
+            </>
+        )
+    } else {
+        return(
+            <>
+                <SearchBar movieName={movieName} setMovieName={setMovieName} />
+                <SearchResults movieName={movieName} movies={movies} movie={movie} setMovie={setMovie} />
+            </>
+        );
+    }
 }
 
 // API call for movie search
-function updateSearch(searchInput, setMovies, setMovie) {
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=23ca29d10fcb0ee407a6a0fddb586cfc&language=en-US&page=1&include_adult=false&query=${searchInput}`)
-    .then(response => {
-        if (response.data.length != 0) {
-            setMovies(response.data.results.slice(0, 12));
-            setMovie(response.data.results[0]);
-        }
-    })
-    .catch(error => {
-        console.log(error);
-    });
+function updateSearch(searchInput, setMovies, setMovie, setLoading) {
+    // accounts for case where input is empty string, otherwise sends request to api
+    if (searchInput === "") {
+        setMovies([]);
+        setMovie({});
+        setLoading(false);
+    } else {
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=23ca29d10fcb0ee407a6a0fddb586cfc&language=en-US&page=1&include_adult=false&query=${searchInput}`)
+        .then(response => {
+            if (response.data.length != 0) {
+                setMovies(response.data.results.slice(0, 12));
+                setMovie(response.data.results[0]);
+            }
+            setLoading(false);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
 }
 
 // Used to set how often text input calls API, so it will update with movie info after the user has stopped typing

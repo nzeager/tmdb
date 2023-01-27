@@ -10,9 +10,10 @@ export const MovieCards = ({ movie, movies, setMovie }) => {
 
     return(
         <>
-            <div><strong>Results</strong></div>
+            <div className="results"><strong>Results</strong></div>
             <div className="movie-cards">
             {movies.map((mov) => (
+                // class 'border-dark' is from bootstrap and used to identify the current 'featured movie'
                 <Card className={movie.id === mov.id && 'border-dark'} key={mov.id}>
                     <Card.Img variant="top" src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`} alt={`${mov.original_title} poster`}  onError={onImageError} />
                     <Card.Body>
