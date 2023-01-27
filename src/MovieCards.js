@@ -13,8 +13,8 @@ export const MovieCards = ({ movie, movies, setMovie }) => {
             <div className="results"><strong>Results</strong></div>
             <div className="movie-cards">
             {movies.map((mov) => (
-                // class 'border-dark' is from bootstrap and used to identify the current 'featured movie'
-                <Card className={movie.id === mov.id && 'border-dark'} key={mov.id}>
+                // Class 'border-dark' is from bootstrap and used to identify the current 'featured movie'. Class 'border-shadow' is defined in App.css.
+                <Card className={movie.id === mov.id && 'border-dark border-shadow'} key={mov.id}>
                     <Card.Img variant="top" src={`https://image.tmdb.org/t/p/original/${mov.poster_path}`} alt={`${mov.original_title} poster`}  onError={onImageError} />
                     <Card.Body>
                         <Card.Title>{mov.original_title}</Card.Title>

@@ -16,10 +16,10 @@ export const FeaturedMovie = ({ movie }) => {
                 <Card.Body>
                     <Card.Title>{movie.original_title}</Card.Title>
                     <Card.Text>
-                    <strong>Overview:</strong> {movie.overview}
+                    {movie.overview && <div><strong>Overview:</strong> {movie.overview}</div>}
                     </Card.Text>
                     <Card.Text>
-                    <strong>Release Date:</strong> {movie.release_date}
+                    {movie.release_date && <div><strong>Release Date:</strong> {movie.release_date}</div>}
                     </Card.Text>
                 </Card.Body>
             </Card>

@@ -33,6 +33,10 @@ body {
     row-gap: 25px;
 }
 
+.border-shadow {
+    box-shadow: 3px 3px black;
+}
+
 .card-body {
     display: flex;
     flex-direction: column;
