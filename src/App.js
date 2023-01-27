@@ -7,9 +7,13 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Find My Movie</h1>
-      <SearchPage />
-      <About />
+      <div>
+        <h1>Find My Movie</h1>
+        <SearchPage />
+      </div>
+      <div className="about">
+        <About />
+      </div>
     </div>
   );
 }
