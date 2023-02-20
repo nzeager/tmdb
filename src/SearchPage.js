@@ -23,10 +23,9 @@ export const SearchPage = () => {
         } else {
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=23ca29d10fcb0ee407a6a0fddb586cfc&language=en-US&page=1&include_adult=false&query=${searchInput}`)
             .then(response => {
-                if (response.data.length !== 0) {
-                    setMovies(response.data.results.slice(0, 12));
-                    setMovie(response.data.results[0]);
-                }
+                setMovies(response.data.results.slice(0, 12));
+                // sets movie to {} if response.data.results[0] is undefined
+                setMovie(response.data.results[0] || {});
                 setLoading(false);
             })
             .catch(error => {
@@ -53,7 +52,7 @@ export const SearchPage = () => {
         return debouncedValue
     }
 
-    const debouncedMovieName = useDebounce(movieName, 500, setLoading)
+    const debouncedMovieName = useDebounce(movieName, 500)
 
     // Initiates loading if movieName is changed
     useEffect(() => {
